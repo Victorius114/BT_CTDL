@@ -3,11 +3,6 @@
 
 using namespace std;
 
-//CHUONG 3
-//La Đức Thắng 
-//K215480106120
-
-//Giai thừa
 int giai_thua(int n)
 {
 	if (n == 0) return 1;

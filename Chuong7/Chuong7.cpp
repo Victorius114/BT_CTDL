@@ -30,7 +30,7 @@ public:
         for (int i = 0; i < dinh; i++) {
             cout << "Dinh " << i << ": ";
             for (auto& p : adjList[i]) {
-                cout << "(" << p.first << ", " << p.second << ") ";
+                cout << "(" << i << ", " << p.first << ", " << p.second << ") ";
             }
             cout << endl;
         }
@@ -104,22 +104,59 @@ public:
     }
 };
 
-int main() {
-    Graph g(5);
+void displayMenu()
+{
+    cout << "\n====== DO THI ======" << endl;
+    cout << "1. Thuat toan Kruskal" << endl;
+    cout << "2. Thuat toan Dijkstra" << endl;
+    cout << "3. Exit" << endl;
+    cout << "==================" << endl;
+    cout << "Nhap lua chon cua ban: ";
+}
 
-    g.addEdge(0, 1, 10);
-    g.addEdge(0, 2, 6);
-    g.addEdge(0, 3, 5);
-    g.addEdge(1, 3, 15);
-    g.addEdge(2, 3, 4);
+int main() {
+    int dinh, canh;
+    cout << "Nhap so dinh: "; cin >> dinh;
+    Graph g(dinh);
+    cout << "Nhap so canh: "; cin >> canh;
+
+    cout << "Nhap thong tin cua canh (u, v, w): ";
+    for (int i = 0; i < canh; i++)
+    {
+        int u, v, w;
+        cout << "\nNhap canh " << i << ": "; 
+        cout << "\n +) Nhap dinh dau: "; cin >> u;
+        cout << "\n +) Nhap dinh cuoi: "; cin >> v;
+        cout << "\n +) Nhap trong so: "; cin >> w;
+        g.addEdge(u, v, w);
+    }
 
     cout << "Danh sach ke:" << endl;
     g.display();
+    int menu = 0, choice;
+    do {
+        displayMenu();
+        cin >> choice;
+        switch (choice) {
+        case 1: {
+            g.kruskal();
+            break;
+        }
 
-    g.kruskal(); // Gọi thuật toán Kruskal
-    cout << endl;
+        case 2: {
+            int start;
+            cout << "Nhap dinh bat dau: ";
+            cin >> start;
+            g.dijkstra(start);
+            break;
+        }
 
-    g.dijkstra(0); // Gọi thuật toán Dijkstra từ đỉnh 0
+        case 3: {
+            exit(0);
+        }
+        }
+    } while (menu == 0);
+    
 
     return 0;
 }
