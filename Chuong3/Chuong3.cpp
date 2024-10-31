@@ -64,7 +64,6 @@ void ThapHaNoi(int n, char a, char b, char c) {
 
 void displayMenu() 
 {
-    cout << "\n" << endl;
     cout << "\n====== DE QUY ======" << endl;
     cout << "1. Tinh giai thua" << endl;
     cout << "2. Tinh Fibonacci" << endl;
@@ -101,8 +100,7 @@ int main()
             }
             case 3:
             {
-                int n = 8;
-                Try(1, n); 
+                Try(1, 8); 
                 break;
             }
             case 4:
@@ -112,6 +110,7 @@ int main()
                 cout << "Nhap so dia: ";
                 cin >> n;
                 ThapHaNoi(n, a, b, c);
+                cout << "\nHoan thanh!";
                 break;
             }
             case 5: {

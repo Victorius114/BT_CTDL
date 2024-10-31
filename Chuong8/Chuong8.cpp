@@ -9,8 +9,8 @@ void displayMenu()
     cout << "1. Selection Sort" << endl;
     cout << "2. Insertion Sort" << endl;
     cout << "3. Bubble Sort" << endl;
-    cout << "4. Quick Sort" << endl;
-    cout << "5. Heap Sort" << endl;
+    cout << "4. Merge Sort" << endl;
+    cout << "5. Quick Sort" << endl;
     cout << "6. Exit" << endl;
     cout << "==================" << endl;
     cout << "Nhap lua chon cua ban: ";

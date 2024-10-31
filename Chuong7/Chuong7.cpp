@@ -15,7 +15,7 @@ class Graph {
 private:
     int dinh;
     vector<vector<pair<int, int>>> adjList; // Danh sách kề với trọng số
-    vector<Canh> canh;
+    vector<Canh> canh; 
 
 public:
     Graph(int vertices) : dinh(vertices), adjList(vertices) {}
@@ -116,8 +116,7 @@ void displayMenu()
 
 int main() {
     int dinh, canh;
-    cout << "Nhap so dinh: "; cin >> dinh;
-    Graph g(dinh);
+    cout << "Nhap so dinh: "; cin >> dinh;    Graph g(dinh);
     cout << "Nhap so canh: "; cin >> canh;
 
     cout << "Nhap thong tin cua canh (u, v, w): ";
