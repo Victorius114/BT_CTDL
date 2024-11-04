@@ -1,7 +1,10 @@
 ﻿#include<iostream>
 #include<cmath>
+#include<vector>
 
 using namespace std;
+
+vector<vector<int> > board(8, vector<int>(8, 0));
 
 int giai_thua(int n)
 {
@@ -22,33 +25,48 @@ int Fibonacci(int n)
 int a[20];
 
 //8 con hậu
-bool Ok(int x2, int y2) {
-    for (int i = 1; i < x2; i++) {
-        if (a[i] == y2 || abs(i - x2) == abs(a[i] - y2))
-            return false;
+bool Ok(int row, int col) {
+    for (int i = 0; i < row; i++)
+    {
+        if (board[i][col] == 1) return false;
     }
+
+    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+    {
+        if (board[i][j] == 1) return false;
+    }
+
+    for (int i = row, j = col; i >= 0 && j < 8; i--, j++)
+    {
+        if (board[i][j] == 1) return false;
+    }
+
     return true;
 }
 
-void Xuat(int n) {
-    for (int i = 1; i <= n; i++) {
-        cout << a[i] << " ";
+void Xuat() {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++)
+            cout << (board[i][j] ? "Q " : ". ");
+        cout << endl;
     }
-    cout << endl;
 }
 
-void Try(int i, int n) {
-    for (int j = 1; j <= n; j++) {
-        if (Ok(i, j)) {
-            a[i] = j;
-            if (i == n) {
-                Xuat(n);
-            }
-            else {
-                Try(i + 1, n);
-            }
+bool Try(int row) {
+    if (row >= 8)
+        return true;
+
+    for (int col = 0; col < 8; col++) {
+        if (Ok(row, col)) {
+            board[row][col] = 1;
+            
+            if (Try(row + 1))
+                return true;
+
+            board[row][col] = 0;
         }
     }
+    return false;
 }
 //8 con hậu
 
@@ -100,7 +118,9 @@ int main()
             }
             case 3:
             {
-                Try(1, 8); 
+                if (Try(0)) {
+                    Xuat();
+                }
                 break;
             }
             case 4:
