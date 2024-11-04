@@ -1,5 +1,27 @@
 ﻿#include<iostream>
 using namespace std;
+class Stack {
+public:
+	void push(int x, int& top, int size, int a[]) {
+		if (top >= size - 1) {
+			cout << "Stack day\n";
+		}
+		else {
+			top++;
+			a[top] = x;
+		}
+	}
+
+	void pop(int& top) {
+		if (top <= -1) {
+			cout << "Stack rong\n";
+		}
+		else {
+			top--;
+		}
+	}
+};
+
 class Queue {
 public:
 	void queue_them(int queue[], int x, int rear, int size)
@@ -27,27 +49,6 @@ public:
 	}
 };
 
-class Stack {
-public:
-    void push(int x, int &top, int size, int a[]) {
-        if (top >= size - 1) {
-            cout << "Stack day\n";
-        } 
-		else {
-            top++;
-            a[top] = x;
-        }
-    }
-
-    void pop(int &top) {
-        if (top <= -1) {
-            cout << "Stack rong\n";
-        } 
-		else {
-            top--;
-        }
-    }
-};
 
 void displayMenu()
 {
