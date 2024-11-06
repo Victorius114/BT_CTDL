@@ -114,7 +114,9 @@ int main()
 				int x;
 				cout << "Nhap phan tu muon them vao queue: "; cin >> x;
 				q.queue_xoa(a, x, 0, size);
-				cout << "\nXoa phan tu a[0]: " << a[0];
+				cout << "Xoa phan tu a[0]: " << a[0];
+				cout << "\n";
+				displayArr(a, i, size-1);
 				cout << "\nThem phan tu moi vao vi tri a[" << size-1<<"] ";
 				q.queue_them(a, x, size - 1, size);
 				cout << "\nQueue moi: "<<endl;
