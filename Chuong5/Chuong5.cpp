@@ -249,11 +249,12 @@ int main() {
                 {
                     menu1 = 1;
                     displayMenu();
-                    switch (choice);
+                    break;
                 }
 
                 }
             } while (menu1 == 0);
+            break;
         }
 
         case 2: {
@@ -307,11 +308,11 @@ int main() {
                 {
                     menu2 = 1;
                     displayMenu();
-                    switch (choice);
                 }
 
                 }
             } while (menu2 == 0);
+            break;
         }
 
         case 3: {
