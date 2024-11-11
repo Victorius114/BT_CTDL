@@ -206,6 +206,7 @@ int main() {
     displayMenu();
     do {
         cin >> choice;
+        system("cls");
         switch (choice)
         {
 
@@ -214,6 +215,7 @@ int main() {
             displayMenu1();
             do {
                 cin >> choice1;
+                system("cls");
                 switch (choice1) {
 
                 case 1: {
@@ -262,8 +264,9 @@ int main() {
             displayMenu2();
             do {
                 cin >> choice2;
-                switch (choice2) {
-
+                system("cls");
+                switch (choice2) 
+                {
                 case 1: {
                     int val2;
                     cout << "Nhap gia tri nut muon them vao danh sach: "; cin >> val2;
