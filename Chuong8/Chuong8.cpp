@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<cmath>
 using namespace std;
 int a[100];
@@ -9,7 +9,7 @@ void displayMenu()
     cout << "1. Selection Sort" << endl;
     cout << "2. Insertion Sort" << endl;
     cout << "3. Bubble Sort" << endl;
-    cout << "4. Merge Sort" << endl;
+    cout << "4. Heap Sort" << endl;
     cout << "5. Quick Sort" << endl;
     cout << "6. Exit" << endl;
     cout << "==================" << endl;
@@ -88,32 +88,39 @@ void merge(int a[], int n1, int b[], int n2, int c[]) {
     }
 }
 
-void mergesort(int a[], int n) {
-    if (n < 2) return;
+// Hàm để xây dựng max-heap từ mảng
+void heapify(int arr[], int n, int i) {
+    int largest = i;        // Giả sử nút hiện tại là lớn nhất
+    int left = 2 * i + 1;   // Con trái
+    int right = 2 * i + 2;  // Con phải
 
-    int m = n / 2;
+    // Nếu con trái lớn hơn nút hiện tại
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
 
-    int* l1 = new int[m]; 
-    int* l2 = new int[n - m];
+    // Nếu con phải lớn hơn nút hiện tại
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
 
-    for (int i = 0; i < m; i++) {
-        l1[i] = a[i];
+    // Nếu nút hiện tại không phải lớn nhất
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
     }
-
-    for (int i = m; i < n; i++) {
-        l2[i - m] = a[i];
-    }
-
-    mergesort(l1, m); 
-    mergesort(l2, n - m); 
-
-    merge(l1, m, l2, n - m, a);
-
-    delete[] l1;
-    delete[] l2;
 }
-//mergesort
 
+// Hàm thực hiện Heap Sort
+void heapSort(int arr[], int n) {
+    // Xây dựng max-heap từ mảng
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Trích xuất từng phần tử từ heap
+    for (int i = n - 1; i > 0; i--) {
+        swap(arr[0], arr[i]);  // Đưa phần tử lớn nhất hiện tại về cuối mảng
+        heapify(arr, i, 0);    // Xây dựng lại max-heap trên mảng thu gọn
+    }
+}
 
 //quick sort
 int partitionFunc(int left, int right, int pivot)
@@ -196,7 +203,7 @@ int main()
         }
         case 4:
         {
-            mergesort(a, n);
+            heapSort(a, n);
             cout << "Sap xep: ";
             for (int i = 0; i < n; i++)
             {
