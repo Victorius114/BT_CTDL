@@ -88,39 +88,33 @@ void merge(int a[], int n1, int b[], int n2, int c[]) {
     }
 }
 
-// Hàm để xây dựng max-heap từ mảng
+// heap sort
 void heapify(int arr[], int n, int i) {
-    int largest = i;        // Giả sử nút hiện tại là lớn nhất
-    int left = 2 * i + 1;   // Con trái
-    int right = 2 * i + 2;  // Con phải
+    int largest = i;       
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
 
-    // Nếu con trái lớn hơn nút hiện tại
     if (left < n && arr[left] > arr[largest])
         largest = left;
 
-    // Nếu con phải lớn hơn nút hiện tại
     if (right < n && arr[right] > arr[largest])
         largest = right;
 
-    // Nếu nút hiện tại không phải lớn nhất
     if (largest != i) {
         swap(arr[i], arr[largest]);
         heapify(arr, n, largest);
     }
 }
-
-// Hàm thực hiện Heap Sort
 void heapSort(int arr[], int n) {
-    // Xây dựng max-heap từ mảng
-    for (int i = n / 2 - 1; i >= 0; i--)
+    for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(arr, n, i);
-
-    // Trích xuất từng phần tử từ heap
+    }
     for (int i = n - 1; i > 0; i--) {
-        swap(arr[0], arr[i]);  // Đưa phần tử lớn nhất hiện tại về cuối mảng
-        heapify(arr, i, 0);    // Xây dựng lại max-heap trên mảng thu gọn
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
     }
 }
+//heap sort
 
 //quick sort
 int partitionFunc(int left, int right, int pivot)
