@@ -37,7 +37,7 @@ void SelectionSort(int a[], int n) {
     }
 }
 
-void insertionSort(int a[], int n)
+void InsertionSort(int a[], int n)
 {
     int holePosition;
     int valueToInsert;
@@ -105,7 +105,7 @@ void heapify(int arr[], int n, int i) {
         heapify(arr, n, largest);
     }
 }
-void heapSort(int arr[], int n) {
+void HeapSort(int arr[], int n) {
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(arr, n, i);
     }
@@ -139,7 +139,7 @@ int partitionFunc(int left, int right, int pivot)
     swap(leftPointer, right);
     return leftPointer;
 }
-void quickSort(int left, int right)
+void QuickSort(int left, int right)
 {
     if (right - left <= 0)
         return;
@@ -147,8 +147,8 @@ void quickSort(int left, int right)
     {
         int pivot = a[right];
         int partition = partitionFunc(left, right, pivot);
-        quickSort(left, partition - 1);
-        quickSort(partition + 1, right);
+        QuickSort(left, partition - 1);
+        QuickSort(partition + 1, right);
     }
 }
 //quick sort
@@ -177,7 +177,7 @@ int main()
         }
         case 2:
         {
-            insertionSort(a, n);
+            InsertionSort(a, n);
             cout << "Sap xep: ";
             for (int i = 0; i < n; i++)
             {
@@ -197,7 +197,7 @@ int main()
         }
         case 4:
         {
-            heapSort(a, n);
+            HeapSort(a, n);
             cout << "Sap xep: ";
             for (int i = 0; i < n; i++)
             {
@@ -207,7 +207,7 @@ int main()
         }
         case 5:
         {
-            quickSort(1, n-1);
+            QuickSort(1, n-1);
             cout << "Sap xep: ";
             for (int i = 0; i < n; i++)
             {
