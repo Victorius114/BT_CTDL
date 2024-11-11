@@ -20,10 +20,16 @@ private:
 public:
     Graph(int vertices) : dinh(vertices), adjList(vertices) {}
 
-    void addEdge(int u, int v, int w) {
-        adjList[u].emplace_back(v, w);
-        adjList[v].emplace_back(u, w); // Nếu đồ thị vô hướng
-        canh.push_back({ u, v, w });
+    void addEdge(int u, int v, int w, int sel) {
+        if (sel == 1){
+            adjList[u].emplace_back(v, w);// Nếu đồ thị có hướng
+            canh.push_back({ u, v, w });
+        }
+        if (sel == 2) {
+            adjList[v].emplace_back(u, w); // Nếu đồ thị vô hướng
+            adjList[v].emplace_back(u, w);
+            canh.push_back({ u, v, w });
+        }
     }
 
     void display() {
@@ -115,19 +121,19 @@ void displayMenu()
 }
 
 int main() {
-    int dinh, canh;
-    cout << "Nhap so dinh: "; cin >> dinh;    Graph g(dinh);
+    int dinh, canh, loai;
+    cout << "Nhap loai do thi (1 = Co huong, 2 = Vo huong): "; cin >> loai;
+    cout << "Nhap so dinh: "; cin >> dinh; Graph g(dinh);
     cout << "Nhap so canh: "; cin >> canh;
-
     cout << "Nhap thong tin cua canh (u, v, w): ";
     for (int i = 0; i < canh; i++)
     {
         int u, v, w;
         cout << "\nNhap canh " << i << ": "; 
-        cout << "\n +) Nhap dinh dau: "; cin >> u;
-        cout << "\n +) Nhap dinh cuoi: "; cin >> v;
-        cout << "\n +) Nhap trong so: "; cin >> w;
-        g.addEdge(u, v, w);
+        cout << "\n+) Nhap dinh dau: "; cin >> u;
+        cout << "+) Nhap dinh cuoi: "; cin >> v;
+        cout << "+) Nhap trong so: "; cin >> w;
+        g.addEdge(u, v, w, loai);
     }
 
     cout << "Danh sach ke:" << endl;
