@@ -4,7 +4,6 @@ using namespace std;
 int a[100];
 void displayMenu()
 {
-    cout << "\n" << endl;
     cout << "\n====== SAP XEP ======" << endl;
     cout << "1. Selection Sort" << endl;
     cout << "2. Insertion Sort" << endl;
@@ -61,30 +60,6 @@ void BubbleSort(int a[], int n) {
                 swap(a[j], a[j + 1]); 
             }
         }
-    }
-}
-
-
-
-//mergesort
-void merge(int a[], int n1, int b[], int n2, int c[]) {
-    int i = 0, j = 0, k = 0;
-
-    while (i < n1 && j < n2) {
-        if (a[i] < b[j]) {
-            c[k++] = a[i++];
-        }
-        else {
-            c[k++] = b[j++];
-        }
-    }
-
-    while (i < n1) {
-        c[k++] = a[i++];
-    }
-
-    while (j < n2) {
-        c[k++] = b[j++];
     }
 }
 

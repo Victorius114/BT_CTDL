@@ -1,15 +1,6 @@
 #include <iostream>
 using namespace std;
 
-void nhap(int k[], int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap phan tu thu a["<<i<<"]: ";
-		cin >> k[i];
-	}
-}
-
 int Seq_Search(int X, int a[], int n)
 {
 	int i = 0;
@@ -36,7 +27,6 @@ int Bin_Search(int X, int a[], int n)
 
 void displayMenu()
 {
-	cout << "\n" << endl;
 	cout << "\n====== TIM KIEM ======" << endl;
 	cout << "1. Sequence Search" << endl;
 	cout << "2. Binary Search" << endl;
@@ -47,11 +37,14 @@ void displayMenu()
 
 int main()
 {
-	int n, menu = 0, choice;
-	cout << "Nhap so phan tu cua mang: ";
-	cin >> n;
-	int a[100];
-	nhap(a, n);
+	int n=0, menu = 0, choice;
+	cout << "Nhap so phan tu cua mang: "; cin >> n;
+	int* a = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Nhap phan tu thu a[" << i << "]: ";
+		cin >> a[i];
+	}
 	do {
 		displayMenu();
 		cin >> choice;
@@ -69,7 +62,7 @@ int main()
 			}
 			else
 			{
-				cout << "Phan tu khong ton tai trong mang.";
+				cout << "Phan tu khong ton tai trong mang." << endl;
 			}
 			break;
 		}
@@ -85,7 +78,7 @@ int main()
 			}
 			else
 			{
-				cout << "Phan tu khong ton tai trong mang.";
+				cout << "Phan tu khong ton tai trong mang." << endl;
 			}
 			break;
 		}
